@@ -44,3 +44,137 @@
     transform: rotate(360deg);
   }
 }
+
+/*=============================*/
+
+.wrapper {
+  box-sizing: border-box;
+  min-width: 320px;
+}
+
+section #title {
+  margin-bottom: 6px;
+}
+
+#passphrase {
+  width: 40rem;
+  max-width: 95vw;
+  text-align: center;
+}
+
+#passphrase .generated {
+  border: none;
+  width: calc(100% - 2em);
+  font-size: 2em;
+  padding: 0.5em 1em;
+  background-color: rgba(0,0,0,0.25);
+  color: lightgray;
+  margin-bottom: 0.75em;
+  text-align: center;
+}
+
+#passphrase .generated:focus {
+  outline: none;
+}
+
+#passphrase .generated.autocopy::-moz-selection {
+  background-color: transparent;
+  color: #d7cfbe;;
+}
+
+#passphrase .generated.autocopy::selection {
+  background-color: transparent;
+  color: #d7cfbe;;
+}
+
+#passphrase .button-group {
+  position: relative;
+}
+
+#passphrase button {
+  /*display: block;*/
+  margin: 0 auto 6px;
+  border-radius: 0;
+  padding: 1em 1.5em;
+  background-color: transparent;
+  color: lightgray;
+  border: 2px solid lightgray;
+}
+
+#passphrase button.secondary {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#passphrase button:focus {
+  outline: none;
+}
+
+#passphrase button:hover {
+  background: lightgray;
+  color: black;
+}
+
+#passphrase button:active {
+  background: darkgray;
+  color: white;
+}
+
+#passphrase .display-char-count {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.message-area {
+  height: 3em;
+}
+
+.copied-success,
+.copy-failed {
+  margin: 0;
+  display: none;
+  padding: 0.5em 0 1em;
+}
+
+.options-panel {
+  text-align: left;
+}
+
+.options-panel .option {
+  display: block;
+}
+
+footer {
+  text-align: center;
+  width: 100%;
+  line-height: 3rem;
+}
+
+footer .credits {
+  font-size: 0.72rem;
+}
+
+footer .credits a {
+  color: #b6b6b6;
+}
+
+footer .credits a:hover {
+  color: #fff;
+}
+
+/* Media Queries */
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 0 6px;
+  }
+}
+
+@media (max-height: 500px) {
+  footer {
+    display: none;
+  }
+}
+
+/* TODO: reduce input text fontsize to fit smaller screens*/
