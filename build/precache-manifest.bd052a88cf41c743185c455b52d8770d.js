@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d406a03ebc396b68f8aab5c94ab9050b",
+    "revision": "90581eb45569ec39a69116d45dbc9e9d",
     "url": "/passphrase-v2/index.html"
   },
   {
