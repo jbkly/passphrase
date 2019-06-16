@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CASING_OPTIONS, DEFAULT_OPTIONS } from './options';
 import { sampleSize, upperFirst } from 'lodash';
 
 import logo from './logo.svg';
 import './App.css';
-
-console.log({ useState, useCallback }); // shut up linter
 
 // import TextField from '@material-ui/core/TextField';
 
