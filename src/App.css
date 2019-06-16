@@ -30,6 +30,7 @@
   animation: App-logo-spin infinite 20s linear;
   height: 2rem;
   pointer-events: none;
+  filter: grayscale(100%);
 }
 
 .App-link {

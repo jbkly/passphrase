@@ -1,6 +1,6 @@
 import React from 'react';
 import { CASING_OPTIONS, DEFAULT_OPTIONS } from './options';
-import _ from 'lodash'; // todo: import only modules needed from lodash
+import { sampleSize, upperFirst } from 'lodash';
 
 import logo from './logo.svg';
 import './App.css';
@@ -9,7 +9,6 @@ import './App.css';
 
 // TODO: use HOOKS, use context
 
-// todo: redo with updated dependencies (react, babel, yarn)
 // todo: over-engineer the state management
 // todo: internationalization?
 
@@ -32,7 +31,6 @@ export default class App extends React.Component {
   }
 
   generatePhrase() {
-    console.log('this.state.options: ', this.state.options);
     // build phrase using lodash sampleSize - is this random enough?
     let words = [];
     // defaults for now - allow more customization
@@ -48,7 +46,7 @@ export default class App extends React.Component {
         wordCount--;
       }
 
-      words = _.sampleSize(this.state.wordList, wordCount);
+      words = sampleSize(this.state.wordList, wordCount);
 
       if (number) {
         let randomIndex = getRandomInt(0, wordCount + 1);
@@ -66,7 +64,7 @@ export default class App extends React.Component {
         break;
       case CASING_OPTIONS.startCase:
       default:
-        words.forEach((word, i, words) => words[i] = _.upperFirst(word));
+        words.forEach((word, i, words) => words[i] = upperFirst(word));
         break;
       // TODO: kebab case? camel case? snake case?
     }
