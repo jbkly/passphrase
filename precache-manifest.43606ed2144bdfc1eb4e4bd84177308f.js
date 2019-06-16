@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "90581eb45569ec39a69116d45dbc9e9d",
+    "revision": "4322a6f37e206e5e8e51cb5e53eddb78",
     "url": "/passphrase-v2/index.html"
   },
   {
-    "revision": "2d3d3222ab44531296f4",
+    "revision": "fd3b387d85f11b732026",
     "url": "/passphrase-v2/static/css/main.c2f60c24.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/passphrase-v2/static/js/2.be6bc650.chunk.js"
   },
   {
-    "revision": "2d3d3222ab44531296f4",
-    "url": "/passphrase-v2/static/js/main.6698ead9.chunk.js"
+    "revision": "fd3b387d85f11b732026",
+    "url": "/passphrase-v2/static/js/main.d3f16e16.chunk.js"
   },
   {
     "revision": "4f7f521a45941d7b63ed",
