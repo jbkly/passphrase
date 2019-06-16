@@ -161,7 +161,7 @@ export default function App() {
       <footer>
         <article className="credits">
           <aside><a href="https://xkcd.com/936/">Why passphrases are better than passwords</a></aside>
-          <aside><a href="https://github.com/jbkly/passphrase">View the Project on GitHub</a></aside>
+          <aside><a href="https://github.com/jbkly/passphrase-v2">View the Project on GitHub</a></aside>
           <aside><img src={logo} className="App-logo" alt="logo" /></aside>
         </article>
       </footer>
