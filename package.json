@@ -1,6 +1,6 @@
 {
-  "name": "passphrase-v2",
-  "version": "0.1.0",
+  "name": "passphrase",
+  "version": "1.0.0",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
@@ -8,7 +8,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://jbkly.github.io/passphrase-v2",
+  "homepage": "https://jbkly.github.io/passphrase",
   "dependencies": {
     "@babel/core": "7.4.3",
     "@svgr/webpack": "4.1.0",
