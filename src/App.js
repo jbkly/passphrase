@@ -1,67 +1,70 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { CASING_OPTIONS, DEFAULT_OPTIONS } from './options';
+import { COPY_SUCCESS, COPY_FAILED } from './messages';
 import { sampleSize, upperFirst } from 'lodash';
 
 import logo from './logo.svg';
 import './App.css';
 
-// import TextField from '@material-ui/core/TextField';
-
-// todo: over-engineer the state management
-// todo: internationalization?
-
 export default function App() {
-  const storedWordlist = localStorage.wordArray ? JSON.parse(localStorage.wordArray) : window.wordArray;
-  const initialOptions = localStorage.passphraseOptions ? JSON.parse(localStorage.passphraseOptions) : DEFAULT_OPTIONS;
+  const storedWordlist = localStorage.wordArray ?
+    JSON.parse(localStorage.wordArray) : window.wordArray;
+  const initialOptions = localStorage.passphraseOptions ?
+    JSON.parse(localStorage.passphraseOptions) : DEFAULT_OPTIONS;
   const [wordList] = useState(storedWordlist);
   const [options, setOptions] = useState(initialOptions);
   const [generatedPhrase, setGeneratedPhrase] = useState('');
+  const [copyMessage, setCopyMessage] = useState(null);
   const phraseInput = useRef(null);
 
-  const copyToClipboard = () => {
+  const lastMessage = useRef(copyMessage);
+  useEffect(() => {
+    lastMessage.current = copyMessage || lastMessage.current;
+  }, [copyMessage]);
+
+  const copyToClipboard = useCallback(() => {
+    let messageTimeoutID;
+    const displayMessage = (text, displayTime) => {
+      clearTimeout(messageTimeoutID);
+      setCopyMessage(text);
+      messageTimeoutID = setTimeout(() => {
+        setCopyMessage(null)
+      }, displayTime);
+    };
+
     // store initial cursor position
     let el = phraseInput.current,
       selectionStart = el.selectionStart,
       selectionEnd = el.selectionEnd;
-
     if (!el.value) return;
 
     el.select();
-
     try {
       // Now that we've selected the text, execute the copy command
-      var successful = document.execCommand('copy');
-      if (successful) {
-        // TODO: clear this attached handler to refresh the message on each click <<<<---
-        // TODO: no jquery
-        // $('#passphrase .copied-success').show().delay(500).fadeOut(2000);
+      if (document.execCommand('copy')) {
+        displayMessage(COPY_SUCCESS, 1000);
 
         // Remove the selection and replace cursor where it was
         window.getSelection().removeAllRanges();
         el.setSelectionRange(selectionStart, selectionEnd);
-
       } else {
-        showAltMessage();
+        displayMessage(COPY_FAILED, 3000);
       }
     } catch(err) {
-      showAltMessage();
+      displayMessage(COPY_FAILED, 3000);
     }
+  }, [phraseInput]);
 
-  };
-
-  const previousPhrase = useRef(generatedPhrase);
   useEffect(() => {
-    if (previousPhrase.current !== generatedPhrase) {
-      copyToClipboard();
-    }
-  });
+    copyToClipboard();
+  }, [generatedPhrase, copyToClipboard]);
 
   const checkPhraseLength = words => words.join(options.separator).length;
 
   const generatePhrase = () => {
     // build phrase using lodash sampleSize - is this random enough?
     let words = [];
-    // defaults for now - allow more customization
+    // defaults for now - todo: allow more customization
     let characterLimit = options.characterLimit ? 20 : Number.MAX_SAFE_INTEGER;
     let separator = options.useSpaces ? ' ' : '';
 
@@ -94,7 +97,7 @@ export default function App() {
       default:
         words.forEach((word, i, words) => words[i] = upperFirst(word));
         break;
-      // TODO: kebab case? camel case? snake case?
+      // todo: other case options
     }
 
     let generatedPhrase = words.join(separator);
@@ -110,17 +113,12 @@ export default function App() {
       optionChanged.separator = optionChanged.useSpaces ? ' ' : '';
     }
 
-    const updatedOptions = Object.assign({}, options, optionChanged);
+    const updatedOptions = { ...options, ...optionChanged };
     setOptions(updatedOptions);
 
-    // todo: check support, use set/get
+    // todo: check localStorage support, use set/get
     // todo: useEffect
     localStorage.passphraseOptions = JSON.stringify(updatedOptions);
-  };
-
-  const showAltMessage = () => {
-    // todo: no jquery
-    // $('#passphrase .copy-failed').show().delay(4000).fadeOut(2000);
   };
 
   return (
@@ -150,8 +148,9 @@ export default function App() {
           <CopyButton onClick={copyToClipboard} phrase={generatedPhrase} />
         </div>
         <div className="message-area">
-          <p className="copied-success">Your phrase has been copied to your clipboard</p>
-          <p className="copy-failed">Press &#8984;+C (Mac) or Ctrl+C (Windows) to copy your passphrase</p>
+          <p className={`copy-message ${copyMessage && 'show'}`}>
+            {copyMessage || lastMessage.current}
+          </p>
         </div>
         <OptionsPanel
           {...options}
@@ -162,7 +161,7 @@ export default function App() {
         <article className="credits">
           <aside><a href="https://xkcd.com/936/">Why passphrases are better than passwords</a></aside>
           <aside><a href="https://github.com/jbkly/passphrase-v2">View the Project on GitHub</a></aside>
-          <aside><img src={logo} className="App-logo" alt="logo" /></aside>
+          <span><img src={logo} className="App-logo" alt="logo" /></span>
         </article>
       </footer>
     </div>

@@ -54,7 +54,6 @@ a {
 
 .wrapper {
   box-sizing: border-box;
-  min-width: 320px;
 }
 
 section #title {
@@ -69,12 +68,12 @@ section #title {
 
 #passphrase .generated {
   border: none;
-  width: calc(100% - 2em);
+  width: calc(100% - 2rem);
   font-size: 2em;
-  padding: 0.5em 1em;
+  padding: 0.5rem 1rem;
   background-color: rgba(0,0,0,0.25);
   color: lightgray;
-  margin-bottom: 0.75em;
+  margin-bottom: 0.75rem;
   text-align: center;
 }
 
@@ -97,7 +96,6 @@ section #title {
 }
 
 #passphrase button {
-  /*display: block;*/
   margin: 0 auto 6px;
   border-radius: 0;
   padding: 1em 1.5em;
@@ -136,11 +134,16 @@ section #title {
   height: 3em;
 }
 
-.copied-success,
-.copy-failed {
+.copy-message {
+  opacity: 0;
   margin: 0;
-  display: none;
   padding: 0.5em 0 1em;
+  transition: opacity 3s ease-out;
+}
+
+.copy-message.show {
+  opacity: 1;
+  transition: opacity 0s;
 }
 
 .options-panel {
@@ -174,6 +177,14 @@ footer .credits a:hover {
   .wrapper {
     padding: 0 6px;
   }
+
+  #passphrase .generated {
+    font-size: 5vw;
+  }
+
+  #passphrase .display-char-count {
+    font-size: 3vw;
+  }
 }
 
 @media (max-height: 500px) {
@@ -181,5 +192,3 @@ footer .credits a:hover {
     display: none;
   }
 }
-
-/* TODO: reduce input text fontsize to fit smaller screens*/
