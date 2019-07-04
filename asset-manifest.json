@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/passphrase-v2/static/css/main.c2f60c24.chunk.css",
-    "main.js": "/passphrase-v2/static/js/main.d3f16e16.chunk.js",
-    "main.js.map": "/passphrase-v2/static/js/main.d3f16e16.chunk.js.map",
+    "main.css": "/passphrase-v2/static/css/main.349c1a72.chunk.css",
+    "main.js": "/passphrase-v2/static/js/main.5c2b3483.chunk.js",
+    "main.js.map": "/passphrase-v2/static/js/main.5c2b3483.chunk.js.map",
     "runtime~main.js": "/passphrase-v2/static/js/runtime~main.f3bb188e.js",
     "runtime~main.js.map": "/passphrase-v2/static/js/runtime~main.f3bb188e.js.map",
-    "static/js/2.be6bc650.chunk.js": "/passphrase-v2/static/js/2.be6bc650.chunk.js",
-    "static/js/2.be6bc650.chunk.js.map": "/passphrase-v2/static/js/2.be6bc650.chunk.js.map",
+    "static/js/2.fb3e84fb.chunk.js": "/passphrase-v2/static/js/2.fb3e84fb.chunk.js",
+    "static/js/2.fb3e84fb.chunk.js.map": "/passphrase-v2/static/js/2.fb3e84fb.chunk.js.map",
     "index.html": "/passphrase-v2/index.html",
-    "precache-manifest.43606ed2144bdfc1eb4e4bd84177308f.js": "/passphrase-v2/precache-manifest.43606ed2144bdfc1eb4e4bd84177308f.js",
+    "precache-manifest.3597b8a11e8b188cb41f74dffda18f30.js": "/passphrase-v2/precache-manifest.3597b8a11e8b188cb41f74dffda18f30.js",
     "service-worker.js": "/passphrase-v2/service-worker.js",
-    "static/css/main.c2f60c24.chunk.css.map": "/passphrase-v2/static/css/main.c2f60c24.chunk.css.map",
+    "static/css/main.349c1a72.chunk.css.map": "/passphrase-v2/static/css/main.349c1a72.chunk.css.map",
     "static/media/logo.svg": "/passphrase-v2/static/media/logo.5d5d9eef.svg"
   }
 }
