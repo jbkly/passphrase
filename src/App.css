@@ -134,11 +134,16 @@ section #title {
   height: 3em;
 }
 
-.copied-success,
-.copy-failed {
+.copy-message {
+  opacity: 0;
   margin: 0;
-  display: none;
   padding: 0.5em 0 1em;
+  transition: opacity 3s ease-out;
+}
+
+.copy-message.show {
+  opacity: 1;
+  transition: opacity 0s;
 }
 
 .options-panel {
